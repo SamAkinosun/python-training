@@ -1,0 +1,8 @@
+# Files learners create while running the lessons
+output.txt
+foods.txt
+
+# Python / Jupyter cruft
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
