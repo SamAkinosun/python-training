@@ -53,6 +53,17 @@ Applied analyst workflow using synthetic financial data (offline, reproducible).
 - 10_capstone_portfolio_report.ipynb - end-to-end report
 - generate_data.py + data/stock_history.csv - reproducible synthetic OHLCV data
 
+### 05-data-automation (added after the data science stage)
+Simple command-line scripts forming a med-tech data pipeline (synthetic data, no real PHI).
+- generate_sample_data.py - synthetic daily device-reading CSVs with deliberate blemishes
+- 01_combine_csvs.py - stack daily files into one
+- 02_validate_readings.py - flag missing and out-of-range values into a report
+- 03_clean_and_standardize.py - dedupe, standardise clinic names/types, convert F to C
+- 04_daily_summary_report.py - summarise by day, clinic, metric
+- 05_archive_files.py - move processed inputs into a dated archive
+- run_pipeline.py - run all steps in order (schedulable via cron / Task Scheduler)
+- Generated data lives under data/ and is gitignored.
+
 ## Supporting files
 - README.md (root) - who it is for, setup, tier order, how to use
 - requirements.txt - jupyterlab, numpy, pandas, matplotlib

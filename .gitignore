@@ -2,6 +2,9 @@
 output.txt
 foods.txt
 
+# Generated data for the automation stage (run generate_sample_data.py to recreate)
+05-data-automation/data/
+
 # Python / Jupyter cruft
 __pycache__/
 *.pyc
