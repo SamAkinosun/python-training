@@ -53,7 +53,8 @@ Every notebook is self-contained and follows the same shape:
    jupyter lab
    ```
 
-4. In the browser tab that opens, navigate to `01-beginner` and open `01_getting_started.ipynb`.
+4. In the browser tab that opens, open `index.ipynb` for a clickable map of every lesson,
+   then start with `01-beginner/01_getting_started.ipynb`.
 
 ## How to use a notebook
 
