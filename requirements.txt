@@ -1,0 +1,8 @@
+# Python training environment
+# Install with:  pip install -r requirements.txt
+# (or with conda:  conda install jupyterlab numpy pandas matplotlib)
+
+jupyterlab
+numpy
+pandas
+matplotlib
