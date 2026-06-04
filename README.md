@@ -19,6 +19,7 @@ The course is split into three stages. Work through them in order.
 | Beginner | `01-beginner` | The basics: variables, types, numbers, strings, decisions, loops |
 | Intermediate | `02-intermediate` | Collections, comprehensions, functions, modules, files and errors |
 | Advanced | `03-advanced` | Classes, NumPy, pandas, data cleaning, charts, a capstone project |
+| Data Science | `04-data-science` | The analyst workflow applied to financial data: returns, risk, portfolios |
 
 Inside each folder, the notebooks are numbered. Start at `01_` and go up. Each stage has
 its own `README.md` with the lesson list and learning objectives.

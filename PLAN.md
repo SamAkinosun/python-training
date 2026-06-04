@@ -39,6 +39,20 @@ the same shape:
 - 07_visualizing_data.ipynb - quick charts with pandas .plot() and matplotlib basics
 - 08_capstone_project.ipynb - small end-to-end analysis tying it together
 
+### 04-data-science (added after the initial three tiers)
+Applied analyst workflow using synthetic financial data (offline, reproducible).
+- 01_data_science_workflow.ipynb - the workflow and toolkit
+- 02_loading_and_inspecting.ipynb - inspect size, types, gaps; slice a time series
+- 03_cleaning_and_preparing.ipynb - duplicates and missing values
+- 04_exploring_and_aggregating.ipynb - groupby, pivot_table, resample
+- 05_financial_returns.ipynb - daily, cumulative, and log returns
+- 06_moving_averages_and_trends.ipynb - rolling averages and trend signals
+- 07_volatility_and_risk.ipynb - volatility, annualising, drawdown
+- 08_portfolio_analysis.ipynb - weights, correlation, portfolio returns
+- 09_visualizing_financial_data.ipynb - rebased lines, histograms, heatmaps
+- 10_capstone_portfolio_report.ipynb - end-to-end report
+- generate_data.py + data/stock_history.csv - reproducible synthetic OHLCV data
+
 ## Supporting files
 - README.md (root) - who it is for, setup, tier order, how to use
 - requirements.txt - jupyterlab, numpy, pandas, matplotlib
