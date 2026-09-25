@@ -15,8 +15,8 @@ pip install -r requirements.txt
 
 `data/stock_history.csv` is **synthetic**: three years of daily Open/High/Low/Close/Volume
 for four fictional tickers (`ATLAS`, `HELIOS`, `NORTH`, `VERTEX`), produced by
-`generate_data.py` with a fixed random seed. It contains no real market, company, or
-personal data. Re-create it any time with `python generate_data.py`.
+`generate_data.ipynb` with a fixed random seed. It contains no real market, company, or
+personal data. Re-create it any time by running `generate_data.ipynb`.
 
 ## Lessons
 
@@ -35,7 +35,7 @@ personal data. Re-create it any time with `python generate_data.py`.
 
 ## Files in this folder
 
-- `generate_data.py` - regenerates the synthetic dataset.
+- `generate_data.ipynb` - regenerates the synthetic dataset.
 - `data/stock_history.csv` - the generated data used by every lesson.
 
 ## How to work through a notebook

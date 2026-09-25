@@ -1,9 +1,8 @@
 # Stage 5: Data Automation
 
-Where the earlier stages live in notebooks, real automation lives in **scripts**: small
-programs you run from the command line and, eventually, on a schedule with no one watching.
-This stage is a set of simple, single-purpose scripts that together form a realistic data
-pipeline for a med-tech company.
+Automation means running the same job the same way every time, eventually on a schedule
+with no one watching. This stage is a set of simple, single-purpose notebooks that
+together form a realistic data pipeline for a med-tech company.
 
 ## The scenario
 
@@ -14,46 +13,56 @@ the same way every day, automatically.
 
 ## Important: the data is synthetic
 
-`generate_sample_data.py` produces **made-up** data with a fixed random seed. Patients are
-opaque codes like `P0001`; there are no real patients, clinics, devices, or any protected
-health information anywhere in this stage. **Never place real patient data in this folder.**
+`generate_sample_data.ipynb` produces **made-up** data with a fixed random seed. Patients
+are opaque codes like `P0001`; there are no real patients, clinics, devices, or any
+protected health information anywhere in this stage. **Never place real patient data in
+this folder.**
 
-## The scripts (run them in order)
+## The notebooks (run them in order)
 
-| Script | What it does |
-|--------|--------------|
-| `generate_sample_data.py` | Creates the daily input files in `data/incoming/` (run this first) |
-| `01_combine_csvs.py` | Stacks every daily CSV into one `combined_readings.csv` |
-| `02_validate_readings.py` | Flags missing values and out-of-range readings into a quality report |
-| `03_clean_and_standardize.py` | Drops duplicates, fixes clinic names and types, converts F to C |
-| `04_daily_summary_report.py` | Summarises by day, clinic, and metric into a report |
-| `05_archive_files.py` | Moves the processed input files into a dated archive folder |
-| `run_pipeline.py` | Runs steps 1 to 5 in order with a single command |
+| Notebook | What it does |
+|----------|--------------|
+| `generate_sample_data.ipynb` | Creates the daily input files in `data/incoming/` (run this first) |
+| `01_combine_csvs.ipynb` | Stacks every daily CSV into one `combined_readings.csv` |
+| `02_validate_readings.ipynb` | Flags missing values and out-of-range readings into a quality report |
+| `03_clean_and_standardize.ipynb` | Drops duplicates, fixes clinic names and types, converts F to C |
+| `04_daily_summary_report.ipynb` | Summarises by day, clinic, and metric into a report |
+| `05_archive_files.ipynb` | Moves the processed input files into a dated archive folder |
+| `run_pipeline.ipynb` | Runs steps 1 to 5 in order with a single click |
 
 ## How to run it
 
-```
-cd 05-data-automation
-python generate_sample_data.py     # create a batch of daily files
-python run_pipeline.py             # combine -> validate -> clean -> summarise -> archive
-```
+1. Open `generate_sample_data.ipynb` and choose **Run > Run All Cells** to create a batch
+   of daily files.
+2. Open `run_pipeline.ipynb` and choose **Run > Run All Cells**. It runs combine, validate,
+   clean, summarise, and archive in order.
 
-Each script can also be run on its own, in order. Outputs land in `data/` (combined and
-clean datasets) and `data/reports/` (the validation and summary reports). That `data/`
-folder is not committed to git; recreate it any time by running `generate_sample_data.py`.
+Each step notebook can also be opened and run on its own, in order. Outputs land in
+`data/` (combined and clean datasets) and `data/reports/` (the validation and summary
+reports). That `data/` folder is not committed to git; recreate it any time by running
+`generate_sample_data.ipynb`.
 
 ## Running it automatically
 
-The point of a pipeline is to run unattended. Once `run_pipeline.py` works, a scheduler can
-run it for you:
+The point of a pipeline is to run unattended. A scheduler cannot click Run All, so it uses
+`jupyter nbconvert`, which runs a notebook from the terminal and saves a copy of the
+finished run in `data/logs/`:
 
-- **Mac / Linux:** add a line to `crontab -e`, for example to run every weekday at 7am:
-  `0 7 * * 1-5 /usr/bin/python3 /full/path/to/run_pipeline.py`
-- **Windows:** use Task Scheduler to run `python run_pipeline.py` on a daily trigger.
+```
+cd /full/path/to/05-data-automation
+jupyter nbconvert --to notebook --execute --output-dir data/logs run_pipeline.ipynb
+```
+
+- **Mac / Linux:** add a line to `crontab -e`, for example to run every weekday at 7am
+  (use the full path to `jupyter`, which `which jupyter` prints):
+  `0 7 * * 1-5 cd /full/path/to/05-data-automation && /full/path/to/jupyter nbconvert --to notebook --execute --output-dir data/logs run_pipeline.ipynb`
+- **Windows:** use Task Scheduler with a daily trigger. Set the program to `jupyter`, the
+  arguments to `nbconvert --to notebook --execute --output-dir data\logs run_pipeline.ipynb`,
+  and "Start in" to the `05-data-automation` folder.
 
 ## What to take away
 
-- Automation scripts do one clear job and can be run from the command line.
+- Automation steps do one clear job and can be run on their own.
 - A pipeline chains those steps so the whole job runs with one command.
 - Always validate data before trusting it, and archive inputs so they are processed once.
 - A scheduler turns "one command" into "runs itself every day".

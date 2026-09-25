@@ -2,8 +2,15 @@
 output.txt
 foods.txt
 
-# Generated data for the automation stage (run generate_sample_data.py to recreate)
+# Generated data for the automation stage (run generate_sample_data.ipynb to recreate)
 05-data-automation/data/
+
+# Models saved while running the machine learning lessons
+07-machine-learning/models/
+
+# API keys must never be committed
+.env
+*.env
 
 # Python / Jupyter cruft
 __pycache__/

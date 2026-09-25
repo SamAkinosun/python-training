@@ -18,7 +18,7 @@ finished the beginner stage. Work through the notebooks in order.
 ## Files in this folder
 
 - `data/Text_File.txt` - a sample file used by the files lesson.
-- `function_examples.py` - a small runnable program that accompanies the functions lesson.
+- `function_examples.ipynb` - a small runnable program that accompanies the functions lesson.
 
 ## How to work through a notebook
 

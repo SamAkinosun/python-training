@@ -1,8 +1,18 @@
-# Python training environment
+# Python training environment (Python 3.10 or newer)
 # Install with:  pip install -r requirements.txt
-# (or with conda:  conda install jupyterlab numpy pandas matplotlib)
+# (or with conda:  conda install jupyterlab numpy pandas matplotlib scikit-learn
+#  then:           pip install torch tensorflow anthropic openai)
 
 jupyterlab
 numpy
 pandas
 matplotlib
+
+# Stage 7: machine learning
+scikit-learn>=1.6
+torch
+tensorflow
+
+# Stage 6: AI agents (you also need your own API key, see 06-ai-agents/02)
+anthropic>=1.0
+openai>=2.0
